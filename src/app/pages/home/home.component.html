@@ -1,0 +1,68 @@
+<!-- <div class="country-filters">
+    <div class="search-filters">
+      <span class="fa fa-search"></span>
+      <input type="text" name="search" class="form-control" placeholder="Country Information" [(ngModel)]="searchFilter" (ngModelChange)="searchCountry()" />
+    </div>
+</div> -->
+
+<!-- Input part of the webpage, to search countreis with respectr the user input  -->
+
+<div class="input-group m-3 mr-2 w-50">
+    <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
+    <input type="text" name="search" class="form-control" placeholder="Country Information" [(ngModel)]="searchFilter" (ngModelChange)="searchCountry()" >
+    <div class="m-2"></div>
+    <select class="form-select mr-2" (ngModelChange)="onChange($event)" aria-label="Default select example" placeholder="Select Region" [ngModel]="searchRegion">
+        <option value="0" selected default>Select</option>
+        <option [value]="region" *ngFor="let region of regions">{{region}}</option>
+      </select>
+  </div>
+
+<div class="input-group mb-3 w-25">
+    
+</div>
+
+<!-- To sort the data  -->
+
+<div class="p-3 m-4 text-center">
+    
+    <table class="w-100">
+        <tr class="border bg-dark text-white">
+            <th class="p-2">Flag</th>
+            <th [appSort]="countries" data-order="desc" data-name="name" scope="col"class="text-center">Name <i class="fas fa-sort"></i> </th>
+            <th [appSort]="countries" data-order="desc" data-name="population" scope="col">Population <i class="fas fa-sort"></i></th>
+            <th [appSort]="countries" data-order="desc" data-name="region" scope="col">Region <i class="fas fa-sort"></i></th>
+            <th>Action</th>
+        </tr>
+        <tr *ngFor="let country of countries" class="p-3 mt-3 border border-dark">
+            <td> <img [src]="country.flag" style="width: 50px; height: 30px;"/> </td>
+            <td class="text-center"> {{ country.name }} </td>
+            <td> {{ country.population | number}} </td>
+            <td> {{ country.region }} </td>
+            <td><button class="btn btn-primary btn-sm m-2" (click)="getCountryDetails(country.alpha3Code)">View</button></td>
+        </tr>
+    </table> 
+
+</div>
+
+<div class="h3 text-center text-danger" *ngIf="this.countries.length == 0">No results found</div>
+
+
+<!-- Logic test -->
+
+<!-- <div class = 'country-cards'  *ngFor="let country of countries">       
+    <div class = "container" *ngIf="country" (click)="getCountryDetails(country.alpha3Code)">
+         <img [src]="country.flag" style="max-width:100%;height:auto;"/> -->
+        
+        <!-- <h3>Country Name: {{ country.name }}</h3> -->
+<!-- 
+        <p>
+            <strong>Population: </strong>
+            {{ country.population | number:'0.1'}}
+        </p>
+        <p>
+            <strong>Region: </strong>
+            {{ country.region}}
+        </p> -->
+
+    <!-- </div> -->
+<!-- </div> -->

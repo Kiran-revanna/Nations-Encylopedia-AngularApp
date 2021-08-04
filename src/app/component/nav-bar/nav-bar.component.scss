@@ -1,0 +1,24 @@
+// navigation Bar CSS File with Flex box implemented
+
+nav{
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem, 3rem ;
+    background-color: #315AB8;
+    font-size: 3em;
+    box-shadow: 4px 4px 5px #201d1d;
+}
+    
+
+
+
+
+.navheader{
+ font-size: 20px;
+ font-weight: 600;
+ color: white;
+ 
+}

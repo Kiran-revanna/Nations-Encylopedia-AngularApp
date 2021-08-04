@@ -1,0 +1,65 @@
+<!-- test logic -->
+
+<!-- <div class="home">
+    <button class = "button shadow" style="float: right;" (click)="goHome()">Home</button>
+</div>
+<div class="container" *ngIf="details">
+    <img [src]="details.flag"   alt="">
+    <h3>Country Name: {{ details.name }}</h3>
+    <h3>Capital of the Country: {{ details.capital }}</h3>
+    <h3>Population of the Country: {{ details.population }}</h3>
+    
+    <h3>Area of teh Country: {{ details.area }}</h3>
+
+    <h3>Borders</h3>
+    <ul>
+        <li *ngFor="let border of details.borders" (click)="getCountryDetails(border)">{{ border }}</li>
+    </ul>
+</div> -->
+
+
+
+<!--  Index File to show the detailed viewed of the countries like Capital, Population, Area, Native name, Region, Currency and Timezone  -->
+
+<div class="my-3 mx-5" *ngIf="details">
+    <div class="row my-4">
+        <div class="col-11"></div>
+        <div class="col-1 text-end">
+            <button type="button" class="btn btn-primary btn-rounded" (click)="goHome()"><i class="fa fa-home"></i></button>
+        </div>
+    </div>
+    <div class="row">
+      <div class="card col-8">
+        <div class="row">
+            <h3 class="text-center mb-1">Details</h3>
+          <hr class="mt-1">
+            <div class="col-4 container-1">
+                <img class="flag-img" [src]="details.flag" alt="">
+                <hr>
+                <h3 class="text-uppercase"> {{ details.name }} </h3>
+            </div>
+            <div class="col-3"></div>
+            <div class="col-5">
+                <h4 class="fw-bold">Capital: <span class="fw-normal"> {{ details.capital }}</span> </h4>
+                <h4 class="fw-bold">Population: <span class="fw-normal"> {{ details.population | number }}</span> </h4>
+                <h4 class="fw-bold">Area: <span class="fw-normal"> {{ details.area | number }}</span> </h4>
+                <h4 class="fw-bold">Region: <span class="fw-normal"> {{ details.region }}</span> </h4>
+                <h4 class="fw-bold">Native Name: <span class="fw-normal"> {{ details.nativeName}}</span> </h4>
+                <h4 class="fw-bold">Currency: <span class="fw-normal"> {{ details.currencies[0].name }} ({{ details.currencies[0].symbol }})</span> </h4>
+                <h4 class="fw-bold">Timezone: <span class="fw-normal"> {{ details.timezones }}</span> </h4>
+            </div>
+        </div>
+      </div>
+      <div class="col-1"></div>
+      <div class="card col-3">
+          <h3 class="text-center mb-1">Borders</h3>
+          <hr class="mt-1">
+          <div class="h5 fw-normal" *ngFor="let border of borders">
+              <!-- Detail Page Borders along with buttons to route to the selected countries  -->
+              <button class="btn btn-outline-primary btn-sm float-end" (click)="getCountryDetails(border.alpha3Code)">View</button>
+              <p>{{border.name}}</p>
+          </div> 
+          <div class="h5 text-danger text-center" *ngIf="this.borders.length == 0">No neighbouring countries</div>
+      </div>
+    </div>
+  </div>
